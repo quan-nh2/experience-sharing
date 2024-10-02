@@ -46,7 +46,7 @@ To centralize and manage data, I created an internal platform that captured all 
 The platform utilized the respective APIs to pull the data, ensuring that we had a consistent, up-to-date view of product stock levels and order statuses across all websites.
 This platform served as the single source of truth, allowing us to not only track stock and order information more reliably but also to automate subsequent processes like reconciliation and reporting.
 
-![pulling-ecom-information](public/images/pulling_ecom_information.png)
+![pulling-ecom-information](https://github.com/quan-nh2/experience-sharing/blob/main/public/images/pulling_ecom_information.png)
 
 1. Automating Stock updates:
 * Create a background job that automatically download the stock data from the FSTP folder every day at 6 AM. The background job will aggregated the stock information and pushed updates to all 5 eCommerce websitre via their respective APIs.
