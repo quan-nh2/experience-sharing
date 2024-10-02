@@ -4,8 +4,6 @@
 **Years of Experience**: 5+ years  
 **Relevant Areas**: E-commerce, Logistics, Finance
 
-In this document, I will share my experience working on an automation solution for a top personal care company in Vietnam, focusing on the challenges of synchronizing stock and order data across multiple eCommerce platforms and ERP systems.
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Context and Background](#context-and-background)
@@ -16,6 +14,7 @@ In this document, I will share my experience working on an automation solution f
 7. [Conclusion](#conclusion)
 
 ## Introduction
+In this document, I will share my experience working on an automation solution for a top personal care company in Vietnam, focusing on the challenges of synchronizing stock and order data across multiple eCommerce platforms and ERP systems.
 
 ## Context and Background
 
@@ -23,7 +22,7 @@ In this document, I will share my experience working on an automation solution f
 **Team Size**: 1.
 **Duration**: 1 month.
 
-I was responsible for developing an automated solution for a leading personal care company in Vietnam to manage operations across five eCommerce websites and synchronize them with the client’s ERP system. The key requirement was to ensure seamless communication and data synchronization between the eCommerce platforms and the ERP system, specifically with regard to stock management and order processing.
+I was responsible for developing an automated solution for a leading personal care company in Vietnam to manage operations across five eCommerce websites (use Third Party Website) and synchronize them with the client’s ERP system. The key requirement was to ensure seamless communication and data synchronization between the eCommerce platforms and the ERP system, specifically with regard to stock management and order processing.
 The daily workflow included:
 * Multiple SKUs per website: Each SKU belonged to two warehouses.
 * Daily stock uploads: At 6 AM, the client uploaded stock data into a shared FSTP folder.
@@ -40,21 +39,28 @@ The main challenges encountered in this manual process were:
 
 * Scalability: As the client considered expanding their operations (adding more websites or warehouses), the manual process became increasingly time-consuming and error-prone. Scaling up using the current method would drastically increase the workload and require significant resources to maintain accuracy.
 
+=> So the value I need to deliver are:
+
+* Reducing the human errors
+* Increasing operational effeciency: release the PIC to daily stuck, give him the time to do any excited thing else.
+* Improve scalability: Client will have more insight to expand the business, no worries about the platform or warehouse.
+
 ## Solution and Approach
 
 To centralize and manage data, I created an internal platform that captured all product and order information from the eCommerce platforms. 
 The platform utilized the respective APIs to pull the data, ensuring that we had a consistent, up-to-date view of product stock levels and order statuses across all websites.
 This platform served as the single source of truth, allowing us to not only track stock and order information more reliably but also to automate subsequent processes like reconciliation and reporting.
 
-![pulling-ecom-information](https://github.com/quan-nh2/experience-sharing/blob/main/public/images/pulling_ecom_information.png)
+![pulling-ecom-information](https://github.com/quan-nh2/experience-sharing/blob/main/public/images/ecoms_auto_flow.png)
 
-1. Automating Stock updates:
+
+1. An background job to automating stock updates:
 * Create a background job that automatically download the stock data from the FSTP folder every day at 6 AM. The background job will aggregated the stock information and pushed updates to all 5 eCommerce websitre via their respective APIs.
 
-2. Automating Reconciliation Reports:
+2. An background job to automating create reconciliation reports:
 * With all data centralized on the internal platform, I automated the reconciliation process. The platform compared the stock data across the websites with the inbound stock files, ensuring consistency. The reconciliation report was then generated automatically using the Google Sheets API and sent to the client’s General Manager via email.
 
-3. Automate Order Reporting:
+3. An background job to create automate order reporting and send email:
 * Using the internal platform’s centralized order data, I automated the generation of .xlsx order reports for each eCommerce website. The reports were created at 12 PM each day and automatically emailed to the client’s ERP system, ensuring timely and accurate order processing without human intervention.
 
 ### The Solution Trade-off:
@@ -63,11 +69,12 @@ This platform served as the single source of truth, allowing us to not only trac
 
 ## Outcome and Impact
 The automated solution delivered several key benefits:
-* 100% reduction in manual errors: The automation eliminated human errors associated with manual stock updates and order reporting.
+* 99% reduction in manual errors: The automation eliminated human errors associated with manual stock updates and order reporting.
 * Increased efficiency: Tasks that previously required several hours each day were completed automatically in under 30 minutes.
 * Scalability: The solution was designed to scale easily, allowing the client to add more websites and warehouses without significantly increasing workload.
 * Improved accuracy: Daily reconciliation reports ensured that stock data across all platforms was always up to date, minimizing discrepancies.
 Client feedback was highly positive, as the solution allowed the business to streamline their operations, freeing up resources for other critical tasks.
+* When the automated system went live, the client quickly realized its effectiveness and requested additional features to further enhance their operations (and have a small bonus to me :)). 
 
 ## Lessons Learned
 * Automation is key: By automating repetitive manual tasks, we drastically improved the efficiency and accuracy of the business processes. This experience reinforced the importance of finding the right tools to streamline operations.
